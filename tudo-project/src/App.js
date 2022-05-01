@@ -31,12 +31,15 @@ function App() {
             >
                 Log In
             </button>
+
             <ul>
-                {posts.map((post) => (
-                    <Row key={post.id}>
-                        <li>{post.title}</li>
-                    </Row>
-                ))}
+                {posts.length
+                    ? posts.map((post) => (
+                          <Row key={post.id}>
+                              <li>{post.title}</li>
+                          </Row>
+                      ))
+                    : "Loading..."}
             </ul>
         </div>
     );
