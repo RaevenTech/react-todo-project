@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./Header";
 import { useState, useEffect } from "react";
 import { Row } from "react-bootstrap";
+import AddPost from "./AddPost";
 
 function App() {
     const [name, setName] = useState("Guest");
@@ -16,15 +17,11 @@ function App() {
     function login(firstName) {
         setName(firstName);
     }
-    function onAddPost() {
-        const newPostArray = [{ id: 999, title: "my new post" }, ...posts];
-        setPosts(newPostArray);
-    }
 
     return (
         <div className="App">
             <Header title={name} />
-            <button onClick={onAddPost}>Add new post</button>
+            <AddPost posts={posts} setPosts={setPosts} />
             <p>Welcome to my blog</p>
             <button
                 onClick={(e) => {
