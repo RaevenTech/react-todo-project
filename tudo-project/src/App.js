@@ -13,15 +13,27 @@ function App() {
             .then((json) => setPosts(json));
     }, []);
 
-    function login() {
-        setName("Raeven");
+    function login(firstName) {
+        setName(firstName);
+    }
+    function onAddPost() {
+        const newPostArray = [{ id: 999, title: "my new post" }, ...posts];
+        setPosts(newPostArray);
     }
 
     return (
         <div className="App">
             <Header title={name} />
+            <button onClick={onAddPost}>Add new post</button>
             <p>Welcome to my blog</p>
-            <button onClick={login}>Log In</button>
+            <button
+                onClick={(e) => {
+                    login("Raeven");
+                    console.log("Btn clicked");
+                }}
+            >
+                Log In
+            </button>
             <ul>
                 {posts.map((post) => (
                     <Row key={post.id}>
